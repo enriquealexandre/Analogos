@@ -1,8 +1,8 @@
 import numpy as np
 import pandas
 from analogos import analogos
-import openpyxl
-from openpyxl.utils.dataframe import dataframe_to_rows
+#import openpyxl
+#from openpyxl.utils.dataframe import dataframe_to_rows
 
 #Para hacer pruebas leo datos de Viento de ECA
 #Están organizados de modo que son matrices NxM, donde N es el número de variables y M el número de instantes de tiempo.
@@ -15,14 +15,15 @@ x = aux.to_numpy()
 x = x-1  #Esto es porque los valores de x están en formato Matlab (el primer índice es 0)
 
 #Método de los análogos
-E = analogos(x,Train,Test)
+e = analogos(x,Train,Test)
+print("Error: ", e)
 
 #Exporto los datos a Excel
-Tdf = pandas.DataFrame(E)
-wb = openpyxl.Workbook()
-ws = wb.active
+#Tdf = pandas.DataFrame(E)
+#wb = openpyxl.Workbook()
+#ws = wb.active
 
-for r in dataframe_to_rows(Tdf, index=False, header=False):
-    ws.append(r)
+#for r in dataframe_to_rows(Tdf, index=False, header=False):
 
-wb.save("salida.xlsx")
+#    ws.append(r)
+#wb.save("salida.xlsx")
