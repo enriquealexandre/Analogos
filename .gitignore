@@ -2,3 +2,4 @@
 *.fig
 *.eps
 .DS_Store
+__pycache__

@@ -32,4 +32,28 @@ Script para probar el método de los análogos. Por ahora lee los datos de los a
 ## ELM ##
 Este es el código fuente tal cual de la ELM (Extreme Learning Machine). Está bajado de https://www3.ntu.edu.sg/home/egbhuang/elm_codes.html
 
+## download.grib (y leegrib.py) ##
+Este archivo de datos es el que he descargado utilizando el código de download.py. Se trata de la temperatura media mensual desde 1979 para una rejilla de puntos en Europa. 
+Para leer los datos se puede utilizar la librería pygrib
+
+    import pygrib
+    file = 'download.grib'
+    gr = pygrib.open(file)
+
+Con esto se tiene en la variable gr el archivo abierto. Esta variable es una lista con un montón de valores. Se pueden ver todos haciendo:
+    for g in gr:
+        print(g)
+
+Salen 509 instantes de tiempo, desde enero de 1979 hasta mayo de 2021. Se puede ver que los valores que vamos a tener de temperatura vienen dados en grados Kelvin. 
+
+Para acceder a los datos de uno de estos meses (por ejemplo, el primero):
+    g = gr[1] #En este caso la numeración empieza en 1
+    g.values
+
+El comando g.values devuelve la matriz de temperaturas para todos los puntos de la rejilla en ese instante temporal. Se puede ver que la rejilla tiene 171x291 puntos (g.values.shape).
+La latitud y longitud de cada uno de los puntos de la rejilla se pueden obtener haciendo:
+    lats, lons = g.latlons()
+
+Madrid, por ejemplo, estaría en los índices [138,95] (Latitud 40.5, Longitud -3.75)
+
 
