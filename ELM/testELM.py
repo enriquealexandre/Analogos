@@ -56,10 +56,25 @@ elmr = pipeline.Pipeline( [( 'rl', rl ), ( 'ridge', ridge )] )
 
 #Entreno la ELM
 elmr.fit(temp_train_x, temp_train_y)
-print ("Training Score: ",elmr.score(temp_train_x, temp_train_y)," - Testing Score: ", elmr.score(temp_test_x, temp_test_y))
+print ("ELM: Training Score: ",elmr.score(temp_train_x, temp_train_y)," - Testing Score: ", elmr.score(temp_test_x, temp_test_y))
 
 #Visualizo el resultado
 import matplotlib.pyplot as plt
+plt.figure(1)
 plt.plot(temp_y) 
 plt.plot(elmr.predict(temp_x), 'r')
+plt.title('Resultado con una ELM')
+
+###########################################
+###########################################
+#Voy a probar con una SVM, a ver qué tal va
+from sklearn import svm
+regr = svm.SVR()
+regr.fit(temp_train_x, np.ravel(temp_train_y))
+
+print ("SVM: Training Score: ",regr.score(temp_train_x, temp_train_y)," - Testing Score: ", regr.score(temp_test_x, temp_test_y))
+plt.figure(2)
+plt.plot(temp_y)
+plt.plot(regr.predict(temp_x),'r')
+plt.title('Resultado con una SVM')
 plt.show()
