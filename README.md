@@ -56,4 +56,11 @@ La latitud y longitud de cada uno de los puntos de la rejilla se pueden obtener 
 
 Madrid, por ejemplo, estaría en los índices [138,95] (Latitud 40.5, Longitud -3.75)
 
+## TestELM.py
+Permite probar a realizar la predicción de una serie temporal utilizando una ELM (Extreme Learning Machine).
+El código para ELMs está en la carpeta ELM, y está bajado de: https://personal.ntu.edu.sg/egbhuang/elm_codes.html
+He adaptado el código de random_layer.py para adaptarlo a Python 3, porque daba algunos errores.
+El código coge los datos de download.grib, que son una serie temporal de temperaturas medidas en una rejilla que cubre toda Europa. Me quedo sólo con un punto (más o menos cercano a Madrid), y esa es la serie temporal que utilizo para hacer pruebas. 
+Se predice la muestra x en base a N muestras anteriores (N es configurable).
+Al final también se hace la prueba con una SVM.
 

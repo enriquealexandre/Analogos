@@ -2,7 +2,7 @@ import pygrib
 import numpy as np
 
 #Abro el fichero de datos
-file = '../download.grib'
+file = 'download.grib'
 gr = pygrib.open(file)
 
 
